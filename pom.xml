@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nl.geodan.docker</groupId>
+    <artifactId>geoserver-docker</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+
+
+    <build>
+        <plugins>
+            <!-- Only for dependencies. Create separate IntelliJ/Eclipse goal for deploying using this plugin. This way the geoserver project gets compiled into a new .war every time.
+            E.g.:
+                1. Working dir: geoserver/src/web/app
+                2. Commandline: -B org.apache.tomcat.maven:tomcat7-maven-plugin:2.3-SNAPSHOT:deploy-only -Dmaven.test.skip=true -Dmaven.tomcat.url=http://localhost:8080/manager/text -Dtomcat.username=tomcat -Dtomcat.password=tomcat -Dmaven.tomcat.update=true -Dtomcat.ignorePackaging=true -Dmaven.tomcat.path=/geoserver -Dmaven.tomcat.warFile=target/geoserver.war
+            -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.3-SNAPSHOT</version>
+            </plugin>
+        </plugins>
+    </build>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <name>Apache Snapshots</name>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
